@@ -1,91 +1,136 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import * as React from "react";
 import { motion } from "framer-motion";
-import Head from "next/head";
+
+// Button Component
+const Button = React.forwardRef<
+  HTMLButtonElement,
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+>(({ className, children, ...props }, ref) => (
+  <button
+    ref={ref}
+    className={`px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 text-lg font-semibold shadow-md hover:shadow-lg ${className}`}
+    {...props}
+  >
+    {children}
+  </button>
+));
+
+// Card Components
+const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={`rounded-2xl border bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 ${className}`}
+      {...props}
+    />
+  )
+);
+
+const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={`p-8 ${className}`}
+      {...props}
+    />
+  )
+);
 
 export default function HandsOfHelp() {
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-800">
-      <Head>
-        <title>Hands of Help Children - Supporting Vulnerable Youth</title>
-        <meta
-          name="description"
-          content="Hands of Help provides essential services including education, healthcare, and nutrition to children in need. Join our mission to empower vulnerable youth."
-        />
-        <meta property="og:image" content="/images/hero-image.jpg" />
-      </Head>
-
+    <div className="min-h-screen bg-gray-50 text-gray-800">
       {/* Hero Section */}
       <section 
-        className="relative h-[90vh] bg-cover bg-center" 
-        style={{ backgroundImage: 'url(/images/hero-image-optimized.jpg)' }}
-        role="img"
-        aria-label="Children smiling and learning in a classroom"
+        className="relative h-screen bg-gradient-to-r from-blue-400 to-purple-500 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/hero-bg.webp')" }}
+        aria-label="Happy children in classroom"
       >
-        <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center">
-          <motion.h1 
-            className="text-4xl md:text-6xl font-bold text-white text-center px-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
+          <motion.h1
+            className="text-5xl md:text-7xl font-bold text-white mb-8 max-w-4xl leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            Empowering Children Through Compassion
+            Building Brighter Futures for Children
           </motion.h1>
-          <Button 
-            className="mt-6"
-            asChild
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.3 }}
           >
-            <a href="/donate" className="hover:no-underline">
-              Support Our Mission
-            </a>
-          </Button>
+            <Button>
+              👐 Support Our Mission
+            </Button>
+          </motion.div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-16 px-6 md:px-20 text-center">
-        <motion.h2 
-          className="text-3xl font-semibold mb-6"
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+      <section className="py-20 px-6 md:px-24 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          Our Commitment to Children
-        </motion.h2>
-        <p className="max-w-3xl mx-auto text-lg">
-          Hands of Help is dedicated to improving the lives of vulnerable children through 
-          education, healthcare, and community support programs. Founded in 2010, we've 
-          impacted over 50,000 lives across 15 countries.
-        </p>
+          <h2 className="text-4xl font-bold mb-8 text-gray-900">
+            Our Commitment to Children
+          </h2>
+          <p className="max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
+            For over a decade, we've provided life-changing support through education, 
+            healthcare, and community programs to children in need across 20+ countries.
+          </p>
+        </motion.div>
       </section>
 
       {/* Programs Section */}
-      <section className="py-16 bg-white px-6 md:px-20">
-        <motion.h2 
-          className="text-3xl font-semibold text-center mb-12"
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+      <section className="py-20 bg-white px-6 md:px-24">
+        <motion.h2
+          className="text-4xl font-bold text-center mb-16 text-gray-900"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          Our Initiatives
+          Our Core Programs
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {["Education", "Healthcare", "Nutrition"].map((program) => (
-            <motion.div 
-              key={program}
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { 
+              title: "Education", 
+              content: "Quality schooling and learning materials for 50,000+ students yearly",
+              img: "edu-books.webp"
+            },
+            { 
+              title: "Healthcare", 
+              content: "Medical checkups, vaccinations, and nutritional support programs",
+              img: "healthcare.webp"
+            },
+            { 
+              title: "Community", 
+              content: "Safe spaces and counseling services for at-risk children",
+              img: "community.webp"
+            }
+          ].map((program) => (
+            <motion.div
+              key={program.title}
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring" }}
+              className="group"
             >
-              <Card className="rounded-2xl shadow-md h-full">
-                <CardContent className="p-6">
-                  <article>
-                    <h3 className="text-xl font-semibold mb-4">{program}</h3>
+              <Card className="h-full overflow-hidden">
+                <CardContent className="p-0">
+                  <div 
+                    className="h-56 bg-cover bg-center"
+                    style={{ backgroundImage: `url(/images/${program.img})` }}
+                  />
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-900">
+                      {program.title}
+                    </h3>
                     <p className="text-gray-600">
-                      Our {program.toLowerCase()} program provides comprehensive support to 
-                      ensure children develop in safe, nurturing environments.
+                      {program.content}
                     </p>
-                  </article>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -93,38 +138,90 @@ export default function HandsOfHelp() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-16 px-6 md:px-20 bg-gray-100 text-center">
-        <motion.h2 
-          className="text-3xl font-semibold mb-6"
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          Join Our Community
-        </motion.h2>
-        <p className="max-w-2xl mx-auto mb-6 text-gray-700">
-          Have questions or want to volunteer? Contact us at{" "}
-          <a 
-            href="mailto:info@handsofhelpchildren.org" 
-            className="text-blue-600 hover:text-blue-800 underline transition-colors"
-          >
-            info@handsofhelpchildren.org
-          </a>
-        </p>
-        <Button asChild>
-          <a href="/contact" className="hover:no-underline">
-            Get Involved
-          </a>
-        </Button>
+      {/* Stats Section */}
+      <section className="py-20 bg-blue-600 text-white">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { number: "50K+", label: "Children Helped" },
+            { number: "120+", label: "Communities" },
+            { number: "15", label: "Countries" },
+            { number: "96%", label: "Success Rate" }
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-4xl font-bold mb-2">{stat.number}</div>
+              <div className="text-lg">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
-      <footer className="py-6 bg-gray-800 text-white text-center">
-        <p className="text-sm">
-          &copy; {new Date().getFullYear()} Hands of Help Children. 
-          All rights reserved. Registered Charity #12345-678
-        </p>
+      {/* Contact Section */}
+      <section className="py-20 px-6 md:px-24 bg-gray-100 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-8 text-gray-900">
+            Change a Life Today
+          </h2>
+          <p className="text-xl text-gray-600 mb-12">
+            Join thousands of supporters making a difference every month
+          </p>
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
+            <Button className="bg-green-600 hover:bg-green-700 px-12">
+              Donate Now
+            </Button>
+            <Button className="bg-purple-600 hover:bg-purple-700 px-12">
+              Volunteer
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-gray-900 text-white py-8">
+        <div className="max-w-6xl mx-auto px-6 text-center md:text-left">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="mb-8">
+              <h3 className="text-xl font-bold mb-4">Hands of Help</h3>
+              <p className="text-gray-400">
+                Registered Charity #123-456789
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Contact</h4>
+              <p className="text-gray-400">
+                123 Hope Street<br/>
+                Global Care City<br/>
+                <a href="mailto:contact@handsofhelp.org" className="hover:text-blue-400">
+                  contact@handsofhelp.org
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
+              <div className="flex flex-col gap-2 text-gray-400">
+                <a href="#" className="hover:text-blue-400">Facebook</a>
+                <a href="#" className="hover:text-blue-400">Instagram</a>
+                <a href="#" className="hover:text-blue-400">Twitter</a>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Legal</h4>
+              <div className="flex flex-col gap-2 text-gray-400">
+                <a href="#" className="hover:text-blue-400">Privacy Policy</a>
+                <a href="#" className="hover:text-blue-400">Annual Report</a>
+                <a href="#" className="hover:text-blue-400">Financials</a>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            &copy; {new Date().getFullYear()} Hands of Help International
+          </div>
+        </div>
       </footer>
-    </main>
+    </div>
   );
 }
