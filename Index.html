@@ -1,227 +1,159 @@
-import * as React from "react";
-import { motion } from "framer-motion";
 
-// Button Component
-const Button = React.forwardRef<
-  HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement>
->(({ className, children, ...props }, ref) => (
-  <button
-    ref={ref}
-    className={`px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 text-lg font-semibold shadow-md hover:shadow-lg ${className}`}
-    {...props}
-  >
-    {children}
-  </button>
-));
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hands of Help Children Organisation</title>
+  <style>
+    /* Basic CSS for styling */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
 
-// Card Components
-const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={`rounded-2xl border bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 ${className}`}
-      {...props}
-    />
-  )
-);
+    header {
+      background-color: #4CAF50;
+      padding: 20px;
+      color: white;
+    }
 
-const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={`p-8 ${className}`}
-      {...props}
-    />
-  )
-);
+    header h1 {
+      margin: 0;
+    }
 
-export default function HandsOfHelp() {
-  return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
-      {/* Hero Section */}
-      <section 
-        className="relative h-screen bg-gradient-to-r from-blue-400 to-purple-500 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/hero-bg.webp')" }}
-        aria-label="Happy children in classroom"
-      >
-        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-center px-4">
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold text-white mb-8 max-w-4xl leading-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            Building Brighter Futures for Children
-          </motion.h1>
-          <motion.div
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <Button>
-              👐 Support Our Mission
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+    nav {
+      margin-top: 10px;
+    }
 
-      {/* About Section */}
-      <section className="py-20 px-6 md:px-24 text-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <h2 className="text-4xl font-bold mb-8 text-gray-900">
-            Our Commitment to Children
-          </h2>
-          <p className="max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
-            For over a decade, we've provided life-changing support through education, 
-            healthcare, and community programs to children in need across 20+ countries.
-          </p>
-        </motion.div>
-      </section>
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-      {/* Programs Section */}
-      <section className="py-20 bg-white px-6 md:px-24">
-        <motion.h2
-          className="text-4xl font-bold text-center mb-16 text-gray-900"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          Our Core Programs
-        </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {[
-            { 
-              title: "Education", 
-              content: "Quality schooling and learning materials for 50,000+ students yearly",
-              img: "edu-books.webp"
-            },
-            { 
-              title: "Healthcare", 
-              content: "Medical checkups, vaccinations, and nutritional support programs",
-              img: "healthcare.webp"
-            },
-            { 
-              title: "Community", 
-              content: "Safe spaces and counseling services for at-risk children",
-              img: "community.webp"
-            }
-          ].map((program) => (
-            <motion.div
-              key={program.title}
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring" }}
-              className="group"
-            >
-              <Card className="h-full overflow-hidden">
-                <CardContent className="p-0">
-                  <div 
-                    className="h-56 bg-cover bg-center"
-                    style={{ backgroundImage: `url(/images/${program.img})` }}
-                  />
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold mb-4 text-gray-900">
-                      {program.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {program.content}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    nav a:hover {
+      text-decoration: underline;
+    }
 
-      {/* Stats Section */}
-      <section className="py-20 bg-blue-600 text-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { number: "50K+", label: "Children Helped" },
-            { number: "120+", label: "Communities" },
-            { number: "15", label: "Countries" },
-            { number: "96%", label: "Success Rate" }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: index * 0.2 }}
-              viewport={{ once: true }}
-            >
-              <div className="text-4xl font-bold mb-2">{stat.number}</div>
-              <div className="text-lg">{stat.label}</div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    #hero {
+      background: #f4f4f4;
+      padding: 50px 20px;
+      text-align: center;
+    }
 
-      {/* Contact Section */}
-      <section className="py-20 px-6 md:px-24 bg-gray-100 text-center">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8 text-gray-900">
-            Change a Life Today
-          </h2>
-          <p className="text-xl text-gray-600 mb-12">
-            Join thousands of supporters making a difference every month
-          </p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
-            <Button className="bg-green-600 hover:bg-green-700 px-12">
-              Donate Now
-            </Button>
-            <Button className="bg-purple-600 hover:bg-purple-700 px-12">
-              Volunteer
-            </Button>
-          </div>
-        </div>
-      </section>
+    section {
+      padding: 40px 20px;
+    }
 
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-6xl mx-auto px-6 text-center md:text-left">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="mb-8">
-              <h3 className="text-xl font-bold mb-4">Hands of Help</h3>
-              <p className="text-gray-400">
-                Registered Charity #123-456789
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact</h4>
-              <p className="text-gray-400">
-                123 Hope Street<br/>
-                Global Care City<br/>
-                <a href="mailto:contact@handsofhelp.org" className="hover:text-blue-400">
-                  contact@handsofhelp.org
-                </a>
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Follow Us</h4>
-              <div className="flex flex-col gap-2 text-gray-400">
-                <a href="#" className="hover:text-blue-400">Facebook</a>
-                <a href="#" className="hover:text-blue-400">Instagram</a>
-                <a href="#" className="hover:text-blue-400">Twitter</a>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Legal</h4>
-              <div className="flex flex-col gap-2 text-gray-400">
-                <a href="#" className="hover:text-blue-400">Privacy Policy</a>
-                <a href="#" className="hover:text-blue-400">Annual Report</a>
-                <a href="#" className="hover:text-blue-400">Financials</a>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            &copy; {new Date().getFullYear()} Hands of Help International
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
+    section:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    h2 {
+      color: #4CAF50;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    /* Button styles */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    /* Responsive image */
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Hands of Help Children Organisation</h1>
+  <nav>
+    <a href="#about">About Us</a>
+    <a href="#work">Our Work</a>
+    <a href="#stories">Success Stories</a>
+    <a href="#donate">Donate</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="hero">
+  <h2>Together, We Can Make a Difference</h2>
+  <p>Join us in helping children in need. Your support can change lives.</p>
+</section>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>Hands of Help Children Organisation is dedicated to providing education, healthcare, and support to disadvantaged children. Our mission is to create a better future for every child in need.</p>
+</section>
+
+<section id="work">
+  <h2>Our Work</h2>
+  <ul>
+    <li>Providing Education and Supplies</li>
+    <li>Healthcare and Nutrition Programs</li>
+    <li>Child Rights Advocacy</li>
+    <li>Community Development</li>
+  </ul>
+  <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Children Helping" />
+</section>
+
+<section id="stories">
+  <h2>Success Stories</h2>
+  <article>
+    <h3>Little Anjali's Journey</h3>
+    <p>Thanks to our programs, Anjali, a young girl from a remote village, now attends school and dreams of becoming a doctor.</p>
+  </article>
+  <article>
+    <h3>Supporting Children in Need</h3>
+    <p>With your help, we provided healthcare to over 500 children last year. Every contribution counts!</p>
+  </article>
+</section>
+
+<section id="donate">
+  <h2>Support Us</h2>
+  <p>Your donations help us reach more children and provide essential services.</p>
+  <!-- Note: For actual donations, integrate with a payment processor -->
+  <a class="btn" href="#contact">Donate Now</a>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Have questions or want to get involved? Reach out!</p>
+  <p>Email: <a href="mailto:info@handsofhelpchildren.org">info@handsofhelpchildren.org</a></p>
+  <p>Phone: +123-456-7890</p>
+  <p>Address: 123 Charity Lane, Helping City, Country</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Hands of Help Children Organisation | All rights reserved</p>
+  <p>
+    <a href="#" style="color: #fff; text-decoration: underline;">Privacy Policy</a>
+  </p>
+</footer>
+
+</body>
+</html>
