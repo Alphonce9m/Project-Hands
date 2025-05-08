@@ -1,163 +1,205 @@
 
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Hands of Help Children Organization - supporting children's education, healthcare, and community development." />
-  <title>Hands of Help Children Organization</title>
-  <!-- Google Fonts for modern typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Hands of Help Children Organization - empowering children through education, healthcare, and community support." />
+<title>Hands of Help Children Organization</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
 
-  <style>
-    /* CSS Variables for theme colors */
-    :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #27ae60;
-      --hover-color: #3498db;
-      --text-color: #333;
-      --background-color: #fff;
-      --footer-background: #2c3e50;
-      --footer-text: #bdc3c7;
-    }
+<style>
+  /* Root variables for theme consistency */
+  :root {
+    --color-primary: #4CAF50;
+    --color-secondary: #FF5722;
+    --color-accent: #FFC107;
+    --color-background: #f9f9f9;
+    --color-text: #333;
+    --color-white: #fff;
+    --color-shadow: rgba(0,0,0,0.1);
+  }
 
-    /* Reset box-sizing and margin/padding */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      background-color: var(--background-color);
-    }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
 
-    /* HEADER */
-    header {
-      background-color: var(--primary-color);
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  /* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 40px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8em;
-    }
+header h1 {
+  font-weight: 700;
+  font-size: 1.8em;
+}
 
-    nav a {
-      color: #ecf0f1;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+nav a {
+  color: var(--color-white);
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
 
-    nav a:hover {
-      color: var(--hover-color);
-    }
+nav a:hover {
+  color: var(--color-accent);
+}
 
-    /* HERO SECTION */
-    #hero {
-      background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)),
-        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
-      color: #fff;
-      text-align: center;
-      padding: 80px 20px;
-    }
+/* Hero section */
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(rgba(76, 175, 80, 0.7), rgba(76, 175, 80, 0.7)),
+              url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  color: var(--color-white);
+}
 
-    #hero h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
+#hero h2 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+}
 
-    #hero p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+#hero p {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
 
-    /* Sections styling */
-    section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+.btn {
+  background-color: var(--color-secondary);
+  padding: 14px 28px;
+  border-radius: 6px;
+  color: var(--color-white);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
 
-    section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: var(--primary-color);
-    }
+.btn:hover {
+  background-color: #e64a19;
+}
 
-    /* Impact grid */
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+/* Sections */
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .impact-item {
-      background: #ecf0f1;
-      padding: 20px;
-      border-radius: 8px;
-      transition: box-shadow 0.3s;
-    }
+section h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+  color: var(--color-primary);
+}
 
-    .impact-item:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+#about p {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  text-align: center;
+  font-size: 1.1em;
+  line-height: 1.5;
+}
 
-    /* Stories, donate, contact sections */
-    .stories,
-    .donate,
-    .contact {
-      background-color: #f4f4f4;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+#impact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
 
-    /* Call to Action Buttons */
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 20px;
-      background-color: var(--secondary-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
+.impact-card {
+  background: var(--color-white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    .btn:hover {
-      background-color: #1e8449;
-    }
+.impact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--color-shadow);
+}
 
-    /* Footer styles */
-    footer {
-      background-color: var(--footer-background);
-      color: var(--footer-text);
-      padding: 30px 20px;
-      text-align: center;
-    }
+.stories, .donate, .contact {
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  margin-bottom: 30px;
+}
 
-    /* Responsive adjustments for smaller screens */
-    @media(max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
+.story {
+  margin-bottom: 20px;
+}
 
-      nav a {
-        margin: 10px 0;
-      }
-    }
-  </style>
+.story h3 {
+  margin-bottom: 10px;
+  color: var(--color-secondary);
+}
+
+#donate h2 {
+  margin-bottom: 15px;
+}
+
+#donate p {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+.contact p {
+  margin: 8px 0;
+  text-align: center;
+}
+
+footer {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media(max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav a {
+    margin: 10px 0;
+  }
+  #hero h2 {
+    font-size: 2em;
+  }
+  section h2 {
+    font-size: 1.8em;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -175,32 +217,32 @@
 
 <!-- HERO -->
 <section id="hero">
-  <h2>Making a Difference in Children's Lives</h2>
-  <p>Join us in empowering and supporting children in need. Your help can change a life today.</p>
-  <a href="#donate" class="btn">Donate Now</a>
+  <h2>Transforming Children's Lives</h2>
+  <p>Join us in creating brighter futures for children in need. Your support can make a real difference today.</p>
+  <a href="#donate" class="btn">Support Us Now</a>
 </section>
 
 <!-- ABOUT US -->
 <section id="about">
   <h2>About Us</h2>
-  <p>Hands of Help Children Organization is committed to providing education, healthcare, and support services to children living in poverty. Our goal is to build a brighter future for every child we serve.</p>
+  <p>We are dedicated to providing education, healthcare, and community support to children living in poverty. Our mission is to empower and uplift the lives of vulnerable children everywhere.</p>
 </section>
 
-<!-- IMPACT / PROGRAMS -->
+<!-- OUR IMPACT -->
 <section id="impact">
   <h2>Our Impact</h2>
   <div class="impact-grid">
-    <div class="impact-item">
+    <div class="impact-card">
       <h3>Education</h3>
-      <p>Over 2,000 children have received quality education resources and scholarships.</p>
+      <p>Over 2,500 children have received scholarships and educational resources to help them thrive.</p>
     </div>
-    <div class="impact-item">
+    <div class="impact-card">
       <h3>Healthcare</h3>
-      <p>Providing medical aid and nutrition to vulnerable children and families.</p>
+      <p>Providing vital medical aid, vaccinations, and nutrition programs to vulnerable children.</p>
     </div>
-    <div class="impact-item">
+    <div class="impact-card">
       <h3>Community Support</h3>
-      <p>Empowering communities through training and development programs.</p>
+      <p>Building resilient communities through training, support, and development initiatives.</p>
     </div>
   </div>
 </section>
@@ -208,21 +250,20 @@
 <!-- STORIES & TESTIMONIALS -->
 <section id="stories">
   <h2>Success Stories</h2>
-  <article>
+  <div class="story">
     <h3>Meet Aisha</h3>
-    <p>Aisha's life was transformed after she received support for education and health. Today, she's dreaming big and achieving her goals.</p>
-  </article>
-  <article>
-    <h3>Supporting Children in Crisis</h3>
-    <p>Because of your donations, we can respond quickly to emergencies and provide essential services.</p>
-  </article>
+    <p>Aisha's life changed after receiving education and healthcare support. She's now dreaming big and working towards her future.</p>
+  </div>
+  <div class="story">
+    <h3>Helping Children in Crisis</h3>
+    <p>Your donations enable us to respond quickly to emergencies and provide vital services to children in need.</p>
+  </div>
 </section>
 
-<!-- DONATION CTA -->
+<!-- SUPPORT OUR CAUSE -->
 <section id="donate" class="donate">
-  <h2>Support Our Cause</h2>
-  <p>Your generous donations help us reach more children in need.</p>
-  <!-- Placeholder for donation button -->
+  <h2>Support Our Mission</h2>
+  <p>Your generosity helps us reach more children and create lasting change.</p>
   <a class="btn" href="#contact">Donate via PayPal</a>
 </section>
 
@@ -230,17 +271,12 @@
 <section id="contact" class="contact">
   <h2>Contact Us</h2>
   <p>Email: info@handsofhelpchildren.org</p>
-  <p>Phone: +123 456 7890</p>
-  <p>Address: 123 Charity Road, Helping City, Country</p>
+  <p>Claris :‏‪+254 704 935174‬‏
+  Kennedy Otieno : ‏‪+254 720 551576‬‏</p>
+  <p>Address: Kasabuni, Ruaraka, Nairobi</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>&copy; 2025 Hands of Help Children Organization. All rights reserved.</p>
-  <p>
-    <a href="#" style="color:#bdc3c7; text-decoration:underline;">Privacy Policy</a>
-  </p>
-</footer>
-
-</body>
-</html>
+  <p>&copy; 2025
+    
