@@ -1,271 +1,441 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Hands of Help Children Organization - empowering children through education, healthcare, and community support." />
-<title>Hands of Help Children Organization</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hands of Help Children - Transforming lives through education, healthcare, and community development">
+    <title>Hands of Help Children | Empowering Young Futures</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Analytics Snippet -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
 <style>
-  :root {
-    --color-primary: #2c3e50;    /* Navy Blue */
-    --color-secondary: #f1c40f;  /* Yellow */
-    --color-accent: #3498db;     /* Light Blue */
-    --color-background: #ffffff;
-    --color-text: #2c3e50;
-    --color-white: #fff;
-    --color-shadow: rgba(0,0,0,0.1);
-  }
+:root {
+    --primary-blue: #1A365D;
+    --accent-gold: #FFD700;
+    --highlight-blue: #2A5298;
+    --text-dark: #2D3748;
+    --text-light: #F7FAFC;
+    --gradient-blue: linear-gradient(135deg, #1A365D 0%, #2A5298 100%);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
-  body {
-    font-family: 'Montserrat', sans-serif;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
-    background-color: var(--color-background);
-    color: var(--color-text);
-  }
+    color: var(--text-dark);
+    background-color: #F7FAFC;
+}
 
-  header {
+/* Header with Navigation */
+.header {
+    background: var(--gradient-blue);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 40px;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-  }
+}
 
-  header h1 {
+.logo {
+    color: var(--text-light);
+    font-size: 1.8rem;
     font-weight: 700;
-    font-size: 1.8em;
-  }
-
-  nav a {
-    color: var(--color-white);
-    margin-left: 25px;
     text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s;
-  }
-
-  nav a:hover {
-    color: var(--color-secondary);
-  }
-
-  #hero {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    color: var(--accent-gold);
+    font-size: 2rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: var(--transition);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gold);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: var(--gradient-blue);
+    display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(44, 62, 80, 0.7)),
-                url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-    color: var(--color-white);
-  }
+    padding: 4rem 2rem;
+    margin-top: 68px; /* Header height offset */
+}
 
-  #hero h2 {
-    font-size: 2.8em;
-    margin-bottom: 20px;
-  }
-
-  #hero p {
-    font-size: 1.2em;
-    max-width: 700px;
-    margin: 0 auto 30px;
-  }
-
-  .btn {
-    background-color: var(--color-secondary);
-    padding: 14px 28px;
-    border-radius: 6px;
-    color: var(--color-primary);
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1em;
-    transition: background-color 0.3s;
-  }
-
-  .btn:hover {
-    background-color: #e6b30f;
-  }
-
-  section {
-    padding: 60px 20px;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  section h2 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: var(--color-primary);
-  }
-
-  #about p {
+.hero-content {
     max-width: 800px;
-    margin: 0 auto 20px;
-    text-align: center;
-    font-size: 1.1em;
-    line-height: 1.5;
-  }
+    color: var(--text-light);
+}
 
-  #impact {
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    animation: slideUp 1s ease;
+}
+
+.hero-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.5s forwards;
+}
+
+/* Impact Section */
+.impact-section {
+    padding: 5rem 2rem;
+    background: white;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.impact-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.impact-card:hover {
+    transform: translateY(-5px);
+}
+
+.impact-number {
+    font-size: 2.5rem;
+    color: var(--highlight-blue);
+    font-weight: 700;
+    margin: 1rem 0;
+}
+
+/* Donation Section */
+.donation-section {
+    background: var(--gradient-blue);
+    color: var(--text-light);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.donation-meter {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.1);
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meter-progress {
+    height: 100%;
+    background: var(--accent-gold);
+    width: 75%;
+    transition: width 1s ease;
+}
+
+/* Success Stories Carousel */
+.stories-section {
+    padding: 4rem 2rem;
+}
+
+.story-carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 2rem 0;
+}
+
+.story-card {
+    flex: 0 0 300px;
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-lg);
+    scroll-snap-align: start;
+}
+
+/* Footer */
+.footer {
+    background: var(--primary-blue);
+    color: var(--text-light);
+    padding: 4rem 2rem;
+}
+
+.footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-  }
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-  .impact-card {
-    background: var(--color-white);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px var(--color-shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
+/* Animations */
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
-  .impact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px var(--color-shadow);
-  }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-  .stories, .donate, .contact {
-    background: #fff;
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px var(--color-shadow);
-    margin-bottom: 30px;
-  }
-
-  .story {
-    margin-bottom: 20px;
-  }
-
-  .story h3 {
-    margin-bottom: 10px;
-    color: var(--color-accent);
-  }
-
-  #donate h2 {
-    margin-bottom: 15px;
-  }
-
-  #donate p {
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 1.1em;
-  }
-
-  .contact p {
-    margin: 8px 0;
-    text-align: center;
-  }
-
-  footer {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    padding: 30px 20px;
-    text-align: center;
-    font-size: 0.9em;
-  }
-
-  @media(max-width: 768px) {
-    header {
-      flex-direction: column;
-      align-items: center;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
     }
-    nav a {
-      margin: 10px 0;
+    
+    .hero-title {
+        font-size: 2.5rem;
     }
-    #hero h2 {
-      font-size: 2em;
+    
+    .impact-grid {
+        grid-template-columns: 1fr;
     }
-    section h2 {
-      font-size: 1.8em;
-    }
-  }
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1s ease;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--accent-gold);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 </style>
 </head>
+
 <body>
-
-<header>
-  <h1>Hands of Help Children</h1>
-  <nav>
-    <a href="#about">About Us</a>
-    <a href="#impact">Our Impact</a>
-    <a href="#stories">Stories</a>
-    <a href="#donate">Donate</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<section id="hero">
-  <h2>Transforming Children's Lives</h2>
-  <p>Join us in creating brighter futures for children in need. Your support can make a real difference today.</p>
-  <a href="https://www.paypal.com/donate" target="_blank" class="btn">Support Us Now</a>
-</section>
-
-<section id="about">
-  <h2>About Us</h2>
-  <p>We are dedicated to providing education, healthcare, and community support to children living in poverty. Our mission is to empower and uplift the lives of vulnerable children everywhere.</p>
-</section>
-
-<section id="impact">
-  <h2>Our Impact</h2>
-  <div class="impact-grid">
-    <div class="impact-card">
-      <h3>Education</h3>
-      <p>Over 2,500 children have received scholarships and educational resources to help them thrive.</p>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-spinner"></div>
     </div>
-    <div class="impact-card">
-      <h3>Healthcare</h3>
-      <p>Providing vital medical aid, vaccinations, and nutrition programs to vulnerable children.</p>
-    </div>
-    <div class="impact-card">
-      <h3>Community Support</h3>
-      <p>Building resilient communities through training, support, and development initiatives.</p>
-    </div>
-  </div>
-</section>
 
-<section id="stories" class="stories">
-  <h2>Success Stories</h2>
-  <div class="story">
-    <h3>Meet Aisha</h3>
-    <p>Aisha's life changed after receiving education and healthcare support. She's now dreaming big and working towards her future.</p>
-  </div>
-  <div class="story">
-    <h3>Helping Children in Crisis</h3>
-    <p>Your donations enable us to respond quickly to emergencies and provide vital services to children in need.</p>
-  </div>
-</section>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-hands-helping logo-icon"></i>
+                Hands of Help
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+                <li><a href="#programs" class="nav-link">Programs</a></li>
+                <li><a href="#donate" class="nav-link">Donate</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section id="donate" class="donate">
-  <h2>Support Our Mission</h2>
-  <p>Your generosity helps us reach more children and create lasting change.</p>
-  <a href="https://www.paypal.com/donate" target="_blank" class="btn">Donate via PayPal</a>
-</section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Empowering Children's Futures</h1>
+            <p class="hero-text">Every child deserves quality education, healthcare, and a safe environment to thrive</p>
+            <div class="cta-buttons">
+                <a href="#donate" class="btn btn-gold">Donate Now</a>
+                <a href="#programs" class="btn btn-outline">Our Programs</a>
+            </div>
+        </div>
+    </section>
 
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
-  <p>Email: <a href="mailto:info@handsofhelpchildren.org">info@handsofhelpchildren.org</a></p>
-  <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
-  <p>Address: 123 Charity Lane, Helping City, Country</p>
-</section>
+    <!-- Impact Section -->
+    <section class="impact-section" id="impact">
+        <h2 class="section-title">Our Global Impact</h2>
+        <div class="impact-grid">
+            <div class="impact-card">
+                <i class="fas fa-graduation-cap impact-icon"></i>
+                <div class="impact-number">25,000+</div>
+                <h3>Children Educated</h3>
+                <p>Providing quality education since 2010</p>
+            </div>
+            <!-- Add more impact cards -->
+        </div>
+    </section>
 
-<footer>
-  <p>&copy; 2025 Hands of Help Children Organization. All rights reserved.</p>
-</footer>
+    <!-- Interactive Donation Meter -->
+    <section class="donation-section" id="donate">
+        <h2 class="section-title">Help Us Reach Our Goal</h2>
+        <div class="donation-meter">
+            <div class="meter-progress" data-goal="50000" data-raised="37500"></div>
+        </div>
+        <div class="donation-stats">
+            <div class="stat">
+                <div class="stat-number">$37,500</div>
+                <div class="stat-label">Raised</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$50,000</div>
+                <div class="stat-label">Goal</div>
+            </div>
+        </div>
+        <a href="#" class="btn btn-gold">Make a Difference</a>
+    </section>
+
+    <!-- Success Stories Carousel -->
+    <section class="stories-section">
+        <h2 class="section-title">Success Stories</h2>
+        <div class="story-carousel">
+            <!-- Story cards with images and quotes -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <!-- Footer sections -->
+        </div>
+    </footer>
+
+<script>
+// Loading Screen
+window.addEventListener('load', () => {
+    const loadingScreen = document.querySelector('.loading-screen');
+    loadingScreen.style.opacity = '0';
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
+    }, 1000);
+});
+
+// Dynamic Donation Meter
+function updateDonationMeter() {
+    const progress = document.querySelector('.meter-progress');
+    const goal = progress.dataset.goal;
+    const raised = progress.dataset.raised;
+    const percentage = (raised / goal) * 100;
+    progress.style.width = `${percentage}%`;
+}
+
+// Smooth Scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Intersection Observer for animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.impact-card, .story-card').forEach((el) => {
+    observer.observe(el);
+});
+
+// Initialize functions
+updateDonationMeter();
+</script>
+
+<!-- Trust Badges -->
+<div class="trust-badges">
+    <img src="https://via.placeholder.com/150x50?text=Charity+Certified" alt="Charity Certification">
+    <img src="https://via.placeholder.com/150x50?text=GDPR+Compliant" alt="GDPR Compliance">
+</div>
+
+<!-- Newsletter Signup -->
+<div class="newsletter-section">
+    <h3>Stay Updated</h3>
+    <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+    </form>
+</div>
 
 </body>
 </html>
