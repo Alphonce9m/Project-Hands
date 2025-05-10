@@ -6,7 +6,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hands of Help Children Organization</title>
-  <!-- Google Fonts for modern typography -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -28,6 +27,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     header h1 {
@@ -110,6 +110,7 @@
       text-decoration: none;
       font-weight: 600;
       transition: background-color 0.3s;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -134,35 +135,16 @@
       }
     }
 
-    #gallery img {
-      width: 300px;
-      border-radius: 8px;
-    }
-
-    form input[type="email"] {
+    form input, form textarea {
+      width: 100%;
       padding: 10px;
-      width: 250px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-
-    /* Back to top button */
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: #27ae60;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 18px;
+      margin: 10px 0;
+      font-size: 1em;
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <h1>Hands of Help Children</h1>
   <nav>
@@ -171,23 +153,23 @@
     <a href="#stories">Stories</a>
     <a href="#donate">Donate</a>
     <a href="#contact">Contact</a>
+    <a href="#blog">Blog</a>
+    <a href="#events">Events</a>
+    <a href="#feedback">Testimonial</a>
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="hero">
   <h2>Making a Difference in Children's Lives</h2>
   <p>Join us in empowering and supporting children in need. Your help can change a life today.</p>
   <a href="#donate" class="btn">Donate Now</a>
 </section>
 
-<!-- ABOUT US -->
 <section id="about">
   <h2>About Us</h2>
   <p>Hands of Help Children Organization is committed to providing education, healthcare, and support services to children living in poverty. Our goal is to build a brighter future for every child we serve.</p>
 </section>
 
-<!-- IMPACT -->
 <section id="impact">
   <h2>Our Impact</h2>
   <div class="impact-grid">
@@ -206,7 +188,6 @@
   </div>
 </section>
 
-<!-- STORIES -->
 <section id="stories">
   <h2>Success Stories</h2>
   <div>
@@ -219,66 +200,69 @@
   </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-  <h2>Gallery</h2>
-  <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
-    <img src="https://via.placeholder.com/300x200" alt="Gallery image" />
-    <img src="https://via.placeholder.com/300x200" alt="Gallery image" />
-    <img src="https://via.placeholder.com/300x200" alt="Gallery image" />
+<section id="events">
+  <h2>Upcoming Events</h2>
+  <ul style="list-style: none; padding: 0; text-align: center;">
+    <li><strong>June 15:</strong> Medical Camp – Korogocho</li>
+    <li><strong>July 10:</strong> Talent Day for Children</li>
+    <li><strong>August 5:</strong> Food Donation Drive</li>
+  </ul>
+</section>
+
+<section id="blog">
+  <h2>Latest Updates</h2>
+  <div class="impact-grid">
+    <div class="impact-item">
+      <h3>School Supplies Drive</h3>
+      <p>We recently distributed over 1,000 backpacks and books to children across five communities.</p>
+    </div>
+    <div class="impact-item">
+      <h3>New Health Clinic Launched</h3>
+      <p>Our new community health clinic now serves 300+ children weekly with basic medical care.</p>
+    </div>
   </div>
 </section>
 
-<!-- DONATION -->
 <section id="donate" style="text-align: center; padding: 40px 20px;">
   <h2>Support Our Cause</h2>
   <p>Your generous donations help us reach more children in need.</p>
   <a class="btn" href="#contact">Donate via PayPal</a>
 </section>
 
-<!-- NEWSLETTER -->
-<section style="text-align: center; background-color: #ecf0f1; padding: 40px 20px;">
-  <h2>Stay Updated</h2>
-  <p>Subscribe to our newsletter and get the latest updates directly in your inbox.</p>
-  <form style="margin-top: 20px;">
-    <input type="email" placeholder="Enter your email" required />
-    <button type="submit" class="btn">Subscribe</button>
+<section id="feedback">
+  <h2>Share Your Testimonial</h2>
+  <form style="max-width:600px; margin:auto;">
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" name="name" required><br />
+    <label for="message">Your Message:</label><br />
+    <textarea id="message" name="message" rows="5" required></textarea><br />
+    <button type="submit" class="btn">Submit</button>
   </form>
 </section>
 
-<!-- VOLUNTEER -->
-<section style="padding: 60px 20px; background-color: #f9f9f9;">
-  <h2>Become a Volunteer</h2>
-  <p>Join our mission by offering your time and skills. Together, we can do more for the children.</p>
-  <a href="#contact" class="btn">Join as Volunteer</a>
-</section>
-
-<!-- CONTACT -->
 <section id="contact">
   <h2>Contact Us</h2>
   <p>Email: info@handsofhelpchildren.org</p>
   <p>Phone: +123 456 7890</p>
   <p>Address: 123 Charity Road, Helping City, Country</p>
+  <div style="margin-top: 30px;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.00215751714!2d36.8451735!3d-1.2920656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d4e5db1c69%3A0x7df914a8c6b3a6a3!2sNairobi!5e0!3m2!1sen!2ske!4v1616624458108!5m2!1sen!2ske"
+      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <p>&copy; 2025 Hands of Help Children Organization. All rights reserved.</p>
-  <p>
-    <a href="#" style="color:#bdc3c7; text-decoration:underline;">Privacy Policy</a>
-  </p>
-  <p>
-    Follow us:
-    <a href="https://facebook.com" target="_blank" style="margin: 0 10px; color: #bdc3c7;">Facebook</a> |
-    <a href="https://twitter.com" target="_blank" style="margin: 0 10px; color: #bdc3c7;">Twitter</a> |
-    <a href="https://instagram.com" target="_blank" style="margin: 0 10px; color: #bdc3c7;">Instagram</a>
-  </p>
+  <p><a href="#" style="color:#bdc3c7; text-decoration:underline;">Privacy Policy</a></p>
 </footer>
 
-<!-- BACK TO TOP -->
-<a href="#" class="back-to-top">↑</a>
+<!-- SIMPLE LIVE CHAT BUTTON -->
+<div style="position: fixed; bottom: 20px; right: 20px;">
+  <button onclick="alert('Our support team will reach out to you shortly.')" class="btn" style="background-color: #2980b9;">Need Help?</button>
+</div>
 
 </body>
-</html>
-
+</hml>
 
