@@ -1,200 +1,36 @@
-import { 
-  Box, 
-  Container, 
-  Heading, 
-  Text, 
-  List, 
-  ListItem, 
-  useColorModeValue, 
-  Flex, 
-  Tag, 
-  Icon, 
-  Button,
-  HStack,
-  useBreakpointValue,
-  Badge,
-  Divider
-} from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaMapMarkerAlt, FaArrowRight, FaUsers } from 'react-icons/fa';
+import { useState } from 'react';
+import { useToast } from '@chakra-ui/react';
+import Layout from '../components/Layout';
+import Hero from '../components/Hero';
+import ImpactSection from '../components/ImpactSection';
+import StoriesSection from '../components/StoriesSection';
+import EventsSection from '../components/EventsSection';
+import BlogSection from '../components/BlogSection';
+import DonationSection from '../components/DonationSection';
+import TestimonialForm from '../components/TestimonialForm';
+import ContactSection from '../components/ContactSection';
+import LiveChat from '../components/LiveChat';
+import NewsletterSignup from '../components/NewsletterSignup';
 
-const MotionBox = motion(Box);
-const MotionListItem = motion(ListItem);
-
-const events = [
-  {
-    id: 1,
-    date: "June 15, 2023",
-    title: "Medical Camp – Korogocho",
-    location: "Korogocho Health Center",
-    time: "9:00 AM - 4:00 PM",
-    category: "Health",
-    description: "Free medical checkups and treatment for children in the Korogocho community",
-    volunteers: 12,
-    status: "upcoming"
-  },
-  {
-    id: 2,
-    date: "July 10, 2023",
-    title: "Talent Day for Children",
-    location: "Nairobi Community Hall",
-    time: "10:00 AM - 2:00 PM",
-    category: "Entertainment",
-    description: "Showcase of talents from children in our program with prizes and performances",
-    volunteers: 8,
-    status: "upcoming"
-  },
-  {
-    id: 3,
-    date: "August 5, 2023",
-    title: "Food Donation Drive",
-    location: "Various Locations",
-    time: "8:00 AM - 5:00 PM",
-    category: "Charity",
-    description: "Distribution of food packages to families in need across Nairobi",
-    volunteers: 20,
-    status: "upcoming"
-  }
-];
-
-export default function EventsSection() {
-  const cardBg = useColorModeValue('white', 'gray.800');
-  const hoverBg = useColorModeValue('gray.100', 'gray.600');
-  const isMobile = useBreakpointValue({ base: true, md: false });
-
-  const getCategoryColor = (category) => {
-    switch(category.toLowerCase()) {
-      case 'health': return 'green';
-      case 'entertainment': return 'purple';
-      case 'charity': return 'orange';
-      default: return 'blue';
-    }
-  };
+export default function Home() {
+  const toast = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   return (
-    <Box as="section" id="events" py={16} bg={useColorModeValue('gray.50', 'gray.700')}>
-      <Container maxW="container.xl">
-        <MotionBox
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <VStack spacing={6} mb={12}>
-            <Heading as="h2" textAlign="center" fontSize={{ base: '2xl', md: '3xl' }}>
-              Upcoming Events
-            </Heading>
-            <Text textAlign="center" maxW="2xl" color={useColorModeValue('gray.600', 'gray.300')}>
-              Join us in our upcoming initiatives to make a difference in children's lives
-            </Text>
-          </VStack>
-
-          <Box
-            bg={cardBg}
-            p={{ base: 4, md: 6 }}
-            borderRadius="lg"
-            boxShadow="md"
-            maxW="800px"
-            mx="auto"
-          >
-            <List spacing={4}>
-              {events.map((event, index) => (
-                <MotionListItem
-                  key={event.id}
-                  p={{ base: 3, md: 4 }}
-                  borderRadius="md"
-                  bg={useColorModeValue('gray.50', 'gray.700')}
-                  _hover={{ 
-                    bg: hoverBg,
-                    boxShadow: 'sm'
-                  }}
-                  transition="all 0.3s ease"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Flex direction={{ base: 'column', md: 'row' }} gap={4}>
-                    {/* Date Box */}
-                    <Flex direction="column" align="center" justify="center" minW="100px">
-                      <Tag colorScheme="blue" size="lg" mb={1}>
-                        {event.date.split(',')[0]}
-                      </Tag>
-                      <Text fontSize="sm" fontWeight="500">
-                        {event.date.split(',')[1].trim()}
-                      </Text>
-                    </Flex>
-
-                    <Divider orientation={isMobile ? "horizontal" : "vertical"} />
-
-                    {/* Event Details */}
-                    <Box flex={1}>
-                      <Flex justify="space-between" align="center" mb={2}>
-                        <Badge 
-                          colorScheme={getCategoryColor(event.category)}
-                          fontSize="0.8em"
-                          px={2}
-                          py={1}
-                        >
-                          {event.category}
-                        </Badge>
-                        <HStack spacing={2}>
-                          <Icon as={FaUsers} color="gray.500" size="sm" />
-                          <Text fontSize="sm">{event.volunteers} volunteers</Text>
-                        </HStack>
-                      </Flex>
-
-                      <Heading as="h3" size="md" mb={2}>
-                        {event.title}
-                      </Heading>
-
-                      <HStack spacing={4} mb={2} flexWrap="wrap">
-                        <HStack spacing={2}>
-                          <Icon as={FaCalendarAlt} color="gray.500" boxSize={4} />
-                          <Text fontSize="sm">{event.time}</Text>
-                        </HStack>
-                        <HStack spacing={2}>
-                          <Icon as={FaMapMarkerAlt} color="gray.500" boxSize={4} />
-                          <Text fontSize="sm">{event.location}</Text>
-                        </HStack>
-                      </HStack>
-
-                      <Text mb={3} color={useColorModeValue('gray.600', 'gray.300')}>
-                        {event.description}
-                      </Text>
-
-                      <Flex justify="space-between" align="center">
-                        <Button 
-                          size="sm" 
-                          variant="outline" 
-                          colorScheme="blue"
-                          rightIcon={<FaArrowRight />}
-                        >
-                          Learn More
-                        </Button>
-                        <Button 
-                          size="sm" 
-                          colorScheme="green"
-                        >
-                          Volunteer
-                        </Button>
-                      </Flex>
-                    </Box>
-                  </Flex>
-                </MotionListItem>
-              ))}
-            </List>
-
-            <Box textAlign="center" mt={6}>
-              <Button 
-                variant="ghost" 
-                colorScheme="blue"
-                rightIcon={<FaArrowRight />}
-              >
-                View All Events
-              </Button>
-            </Box>
-          </Box>
-        </MotionBox>
-      </Container>
-    </Box>
-  );
-}
+    <Layout>
+      <Hero />
+      <ImpactSection />
+      <StoriesSection />
+      <EventsSection />
+      <DonationSection />
+      <BlogSection />
+      <TestimonialForm 
+        toast={toast} 
+        isSubmitting={isSubmitting} 
+        setIsSubmitting={setIsSubmitting} 
+      />
+      <ContactSection />
+      <NewsletterSignup />
+      <LiveChat />
+      </Layout>
+        
