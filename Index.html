@@ -1,36 +1,167 @@
-import { useState } from 'react';
-import { useToast } from '@chakra-ui/react';
-import Layout from '../components/Layout';
-import Hero from '../components/Hero';
-import ImpactSection from '../components/ImpactSection';
-import StoriesSection from '../components/StoriesSection';
-import EventsSection from '../components/EventsSection';
-import BlogSection from '../components/BlogSection';
-import DonationSection from '../components/DonationSection';
-import TestimonialForm from '../components/TestimonialForm';
-import ContactSection from '../components/ContactSection';
-import LiveChat from '../components/LiveChat';
-import NewsletterSignup from '../components/NewsletterSignup';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Community Impact - Making a Difference Together</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Community Impact</h1>
+      <nav>
+        <a href="#impact">Our Impact</a>
+        <a href="#stories">Success Stories</a>
+        <a href="#events">Events</a>
+        <a href="#blog">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-export default function Home() {
-  const toast = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  <section id="hero">
+    <div class="container">
+      <h2>Building a Better Future Together</h2>
+      <p>Join us in creating positive change in our community through sustainable initiatives and collaborative efforts.</p>
+      <a href="#impact" class="btn">Learn More</a>
+    </div>
+  </section>
 
-  return (
-    <Layout>
-      <Hero />
-      <ImpactSection />
-      <StoriesSection />
-      <EventsSection />
-      <DonationSection />
-      <BlogSection />
-      <TestimonialForm 
-        toast={toast} 
-        isSubmitting={isSubmitting} 
-        setIsSubmitting={setIsSubmitting} 
-      />
-      <ContactSection />
-      <NewsletterSignup />
-      <LiveChat />
-      </Layout>
-        
+  <section id="impact">
+    <div class="container">
+      <h2>Our Impact</h2>
+      <div class="impact-grid">
+        <div class="impact-item fade-in">
+          <i class="fas fa-hands-helping icon"></i>
+          <h3>Community Support</h3>
+          <p>Over 1,000 families supported through our various programs</p>
+        </div>
+        <div class="impact-item fade-in">
+          <i class="fas fa-seedling icon"></i>
+          <h3>Environmental Impact</h3>
+          <p>500+ trees planted and maintained in local parks</p>
+        </div>
+        <div class="impact-item fade-in">
+          <i class="fas fa-graduation-cap icon"></i>
+          <h3>Education</h3>
+          <p>200+ students provided with educational resources</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stories">
+    <div class="container">
+      <h2>Success Stories</h2>
+      <div class="stories-grid">
+        <div class="story-card fade-in">
+          <h3>Sarah's Journey</h3>
+          <p>"Thanks to the community support program, I was able to start my own small business and provide for my family."</p>
+        </div>
+        <div class="story-card fade-in">
+          <h3>Green Initiative Success</h3>
+          <p>"Our neighborhood park has been transformed into a beautiful green space where families can gather and children can play."</p>
+        </div>
+        <div class="story-card fade-in">
+          <h3>Educational Breakthrough</h3>
+          <p>"The after-school program helped my daughter improve her grades and discover her passion for science."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events">
+    <div class="container">
+      <h2>Upcoming Events</h2>
+      <div class="events-list">
+        <div class="event-item fade-in">
+          <div class="date">June 15, 2024</div>
+          <div class="event-details">
+            <h3>Community Clean-up Day</h3>
+            <p>Join us for a day of cleaning and beautifying our local parks</p>
+          </div>
+        </div>
+        <div class="event-item fade-in">
+          <div class="date">July 1, 2024</div>
+          <div class="event-details">
+            <h3>Summer Youth Program</h3>
+            <p>Registration opens for our summer educational program</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="container">
+      <h2>Latest Updates</h2>
+      <div class="blog-grid">
+        <div class="blog-card fade-in">
+          <h3>New Community Garden Project</h3>
+          <p>We're excited to announce the launch of our new community garden initiative...</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+        <div class="blog-card fade-in">
+          <h3>Volunteer Spotlight</h3>
+          <p>Meet our dedicated volunteers who make everything possible...</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Get Involved</h2>
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> contact@communityimpact.org</p>
+        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Community Street, City, State 12345</p>
+      </div>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30591910525!2d-74.25986432970718!3d40.697149422113014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645564750981!5m2!1sen!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Community Impact. All rights reserved.</p>
+      <a href="#" class="privacy-link">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <button class="help-button">
+    <i class="fas fa-question-circle"></i> Need Help?
+  </button>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
