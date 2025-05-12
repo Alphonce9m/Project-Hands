@@ -1,268 +1,200 @@
+import { 
+  Box, 
+  Container, 
+  Heading, 
+  Text, 
+  List, 
+  ListItem, 
+  useColorModeValue, 
+  Flex, 
+  Tag, 
+  Icon, 
+  Button,
+  HStack,
+  useBreakpointValue,
+  Badge,
+  Divider
+} from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { FaCalendarAlt, FaMapMarkerAlt, FaArrowRight, FaUsers } from 'react-icons/fa';
 
+const MotionBox = motion(Box);
+const MotionListItem = motion(ListItem);
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hands of Help Children Organization</title>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      box-sizing: border-box;
+const events = [
+  {
+    id: 1,
+    date: "June 15, 2023",
+    title: "Medical Camp – Korogocho",
+    location: "Korogocho Health Center",
+    time: "9:00 AM - 4:00 PM",
+    category: "Health",
+    description: "Free medical checkups and treatment for children in the Korogocho community",
+    volunteers: 12,
+    status: "upcoming"
+  },
+  {
+    id: 2,
+    date: "July 10, 2023",
+    title: "Talent Day for Children",
+    location: "Nairobi Community Hall",
+    time: "10:00 AM - 2:00 PM",
+    category: "Entertainment",
+    description: "Showcase of talents from children in our program with prizes and performances",
+    volunteers: 8,
+    status: "upcoming"
+  },
+  {
+    id: 3,
+    date: "August 5, 2023",
+    title: "Food Donation Drive",
+    location: "Various Locations",
+    time: "8:00 AM - 5:00 PM",
+    category: "Charity",
+    description: "Distribution of food packages to families in need across Nairobi",
+    volunteers: 20,
+    status: "upcoming"
+  }
+];
+
+export default function EventsSection() {
+  const cardBg = useColorModeValue('white', 'gray.800');
+  const hoverBg = useColorModeValue('gray.100', 'gray.600');
+  const isMobile = useBreakpointValue({ base: true, md: false });
+
+  const getCategoryColor = (category) => {
+    switch(category.toLowerCase()) {
+      case 'health': return 'green';
+      case 'entertainment': return 'purple';
+      case 'charity': return 'orange';
+      default: return 'blue';
     }
+  };
 
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fff;
-    }
+  return (
+    <Box as="section" id="events" py={16} bg={useColorModeValue('gray.50', 'gray.700')}>
+      <Container maxW="container.xl">
+        <MotionBox
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <VStack spacing={6} mb={12}>
+            <Heading as="h2" textAlign="center" fontSize={{ base: '2xl', md: '3xl' }}>
+              Upcoming Events
+            </Heading>
+            <Text textAlign="center" maxW="2xl" color={useColorModeValue('gray.600', 'gray.300')}>
+              Join us in our upcoming initiatives to make a difference in children's lives
+            </Text>
+          </VStack>
 
-    header {
-      background-color: #2c3e50;
-      padding: 20px 40px;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
+          <Box
+            bg={cardBg}
+            p={{ base: 4, md: 6 }}
+            borderRadius="lg"
+            boxShadow="md"
+            maxW="800px"
+            mx="auto"
+          >
+            <List spacing={4}>
+              {events.map((event, index) => (
+                <MotionListItem
+                  key={event.id}
+                  p={{ base: 3, md: 4 }}
+                  borderRadius="md"
+                  bg={useColorModeValue('gray.50', 'gray.700')}
+                  _hover={{ 
+                    bg: hoverBg,
+                    boxShadow: 'sm'
+                  }}
+                  transition="all 0.3s ease"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Flex direction={{ base: 'column', md: 'row' }} gap={4}>
+                    {/* Date Box */}
+                    <Flex direction="column" align="center" justify="center" minW="100px">
+                      <Tag colorScheme="blue" size="lg" mb={1}>
+                        {event.date.split(',')[0]}
+                      </Tag>
+                      <Text fontSize="sm" fontWeight="500">
+                        {event.date.split(',')[1].trim()}
+                      </Text>
+                    </Flex>
 
-    header h1 {
-      margin: 0;
-      font-size: 1.8em;
-    }
+                    <Divider orientation={isMobile ? "horizontal" : "vertical"} />
 
-    nav a {
-      color: #ecf0f1;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+                    {/* Event Details */}
+                    <Box flex={1}>
+                      <Flex justify="space-between" align="center" mb={2}>
+                        <Badge 
+                          colorScheme={getCategoryColor(event.category)}
+                          fontSize="0.8em"
+                          px={2}
+                          py={1}
+                        >
+                          {event.category}
+                        </Badge>
+                        <HStack spacing={2}>
+                          <Icon as={FaUsers} color="gray.500" size="sm" />
+                          <Text fontSize="sm">{event.volunteers} volunteers</Text>
+                        </HStack>
+                      </Flex>
 
-    nav a:hover {
-      color: #3498db;
-    }
+                      <Heading as="h3" size="md" mb={2}>
+                        {event.title}
+                      </Heading>
 
-    #hero {
-      background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') no-repeat center/cover;
-      color: #fff;
-      text-align: center;
-      padding: 80px 20px;
-    }
+                      <HStack spacing={4} mb={2} flexWrap="wrap">
+                        <HStack spacing={2}>
+                          <Icon as={FaCalendarAlt} color="gray.500" boxSize={4} />
+                          <Text fontSize="sm">{event.time}</Text>
+                        </HStack>
+                        <HStack spacing={2}>
+                          <Icon as={FaMapMarkerAlt} color="gray.500" boxSize={4} />
+                          <Text fontSize="sm">{event.location}</Text>
+                        </HStack>
+                      </HStack>
 
-    #hero h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
+                      <Text mb={3} color={useColorModeValue('gray.600', 'gray.300')}>
+                        {event.description}
+                      </Text>
 
-    #hero p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+                      <Flex justify="space-between" align="center">
+                        <Button 
+                          size="sm" 
+                          variant="outline" 
+                          colorScheme="blue"
+                          rightIcon={<FaArrowRight />}
+                        >
+                          Learn More
+                        </Button>
+                        <Button 
+                          size="sm" 
+                          colorScheme="green"
+                        >
+                          Volunteer
+                        </Button>
+                      </Flex>
+                    </Box>
+                  </Flex>
+                </MotionListItem>
+              ))}
+            </List>
 
-    section {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      color: #2c3e50;
-    }
-
-    .impact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .impact-item {
-      background: #ecf0f1;
-      padding: 20px;
-      border-radius: 8px;
-      transition: box-shadow 0.3s;
-    }
-
-    .impact-item:hover {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    .stories, .donate, .contact {
-      background-color: #f4f4f4;
-      border-radius: 8px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 20px;
-      background-color: #27ae60;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background-color: #1e8449;
-    }
-
-    footer {
-      background-color: #2c3e50;
-      color: #bdc3c7;
-      padding: 30px 20px;
-      text-align: center;
-    }
-
-    @media(max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      nav a {
-        margin: 10px 0;
-      }
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 1em;
-    }
-  </style>
-</head>
-<body>
-
-<header>
-  <h1>Hands of Help Children</h1>
-  <nav>
-    <a href="#about">About Us</a>
-    <a href="#impact">Our Impact</a>
-    <a href="#stories">Stories</a>
-    <a href="#donate">Donate</a>
-    <a href="#contact">Contact</a>
-    <a href="#blog">Blog</a>
-    <a href="#events">Events</a>
-    <a href="#feedback">Testimonial</a>
-  </nav>
-</header>
-
-<section id="hero">
-  <h2>Making a Difference in Children's Lives</h2>
-  <p>Join us in empowering and supporting children in need. Your help can change a life today.</p>
-  <a href="#donate" class="btn">Donate Now</a>
-</section>
-
-<section id="about">
-  <h2>About Us</h2>
-  <p>Hands of Help Children Organization is committed to providing education, healthcare, and support services to children living in poverty. Our goal is to build a brighter future for every child we serve.</p>
-</section>
-
-<section id="impact">
-  <h2>Our Impact</h2>
-  <div class="impact-grid">
-    <div class="impact-item">
-      <h3>Education</h3>
-      <p>Over 100,children have received quality education resources and scholarships.</p>
-    </div>
-    <div class="impact-item">
-      <h3>Helthcare</h3>
-      <p>Providing educational aid and nutrition to vulnerable children and families.</p>
-    </div>
-    <div class="impact-item">
-      <h3>Community Support</h3>
-      <p>Empowering communities through training and development programs.</p>
-    </div>
-  </div>
-</section>
-
-<section id="stories">
-  <h2>Success Stories</h2>
-  <div>
-    <h3>Meet Natalie</h3>
-    <p>Natalie'slife was transformed after she received support for education and health. Today, she's dreaming big and achieving her goals.</p>
-  </div>
-  <div>
-    <h3>Supporting Children in Crisis</h3>
-    <p>Because of your donations, we can respond quickly to emergencies and provide essential services.</p>
-  </div>
-</section>
-
-<section id="events">
-  <h2>Upcoming Events</h2>
-  <ul style="list-style: none; padding: 0; text-align: center;">
-    <li><strong>June 15:</strong> Medical Camp – Korogocho</li>
-    <li><strong>July 10:</strong> Talent Day for Children</li>
-    <li><strong>August 5:</strong> Food Donation Drive</li>
-  </ul>
-</section>
-
-<section id="blog">
-  <h2>Latest Updates</h2>
-  <div class="impact-grid">
-    <div class="impact-item">
-      <h3>School Supplies Drive</h3>
-      <p>We recently distributed over 2,000 backpacks and books to children across five communities.</p>
-    </div>
-    <div class="impact-item">
-      <h3>New Health Clinic Launched</h3>
-      <p>Our new community health clinic now serves 100+ children weekly with basic medical care.</p>
-    </div>
-  </div>
-</section>
-
-<section id="donate" style="text-align: center; padding: 40px 20px;">
-  <h2>Support Our Cause</h2>
-  <p>Your generous donations help us reach more children in need.</p>
-  <a class="btn" href="#contact">Donate via PayPal</a>
-</section>
-
-<section id="feedback">
-  <h2>Share Your Testimonial</h2>
-  <form style="max-width:600px; margin:auto;">
-    <label for="name">Name:</label><br />
-    <input type="text" id="name" name="name" required><br />
-    <label for="message">Your Message:</label><br />
-    <textarea id="message" name="message" rows="5" required></textarea><br />
-    <button type="submit" class="btn">Submit</button>
-  </form>
-</section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: info@handsofhelpchildren.org</p>
-  <p>Phone: +254 723 065 707</p>
-  <p>Address: Kasabuni, Nairobi, Kenya</p>
-  <div style="margin-top: 30px;">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.00215751714!2d36.8451735!3d-1.2920656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d4e5db1c69%3A0x7df914a8c6b3a6a3!2sNairobi!5e0!3m2!1sen!2ske!4v1616624458108!5m2!1sen!2ske"
-      width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-    </iframe>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2025 Hands of Help Children Organization. All rights reserved.</p>
-  <p><a href="#" style="color:#bdc3c7; text-decoration:underline;">Privacy Policy</a></p>
-</footer>
-
-<!-- SIMPLE LIVE CHAT BUTTON -->
-<div style="position: fixed; bottom: 20px; right: 20px;">
-  <button onclick="alert('Our support team will reach out to you shortly.')" class="btn" style="background-color: #2980b9;">Need Help?</button>
-</div>
-
-</body>
-</hml>
-
+            <Box textAlign="center" mt={6}>
+              <Button 
+                variant="ghost" 
+                colorScheme="blue"
+                rightIcon={<FaArrowRight />}
+              >
+                View All Events
+              </Button>
+            </Box>
+          </Box>
+        </MotionBox>
+      </Container>
+    </Box>
+  );
+}
